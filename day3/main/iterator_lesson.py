@@ -20,18 +20,19 @@ print return_value
 
         
 class MyIterator(object):
-    def __init__(self,step):
-        self.step=step
+    def __init__(self,funcs):
+        self.total_step=len(funcs)
+        self.func_list=funcs
+        self.step=0
     def __iter__(self):
         return self      
-    def next(self):
-        if self.step==0:
-            raise StopIteration
-        self.step-=1
-        return self.step
-
-c=MyIterator(4)
-print c.next()
-print c.next()
-print c.next()
-print c.next()
+    def next(self):        
+        if self.step < self.total_step :
+            self.step+=1
+            return self.func_list[self.step-1]
+        else:
+            raise StopIteration       
+c=MyIterator(function_list)
+print apply(c.next(),('Lee',29))
+print apply(c.next(),('Marlon',))
+print apply(c.next(),('Allen',))
