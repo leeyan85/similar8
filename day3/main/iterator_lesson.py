@@ -14,8 +14,7 @@ function_list=  [Lee,Marlon,Allen]
 a=MyGenerator(*function_list)
 print apply(a.next(),('Lee',29))
 print apply(a.next())
-return_value = apply(a.next())
-print return_value
+print apply(a.next())
 
 
         
@@ -23,7 +22,7 @@ class MyIterator(object):
     def __init__(self,funcs):
         self.total_funcs=len(funcs)
         self.func_list=funcs
-        self.step=0
+        self.step = 0
     def __iter__(self):
         pass
     def next(self):        

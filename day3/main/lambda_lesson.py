@@ -48,7 +48,7 @@ print result
 import math
 temp=lambda x,y: x+y
 
-print map(lambda x:pow(x,x),value)
+print map(lambda x:pow(x,2),value)
 print reduce(lambda x,y:x+y,value)
 #print vars()
 
