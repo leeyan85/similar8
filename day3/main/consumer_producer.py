@@ -20,10 +20,8 @@ class Producer(threading.Thread):
   
         self.data=queue
   
-    def run(self):  
-  
-        for i in range(5):  
-  
+    def run(self):    
+        for i in range(5):    
             print "%s: %s is producing %d to the queue!\n" %(time.ctime(), self.getName(), i)    
             self.data.put(i)  
   
