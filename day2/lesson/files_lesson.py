@@ -24,3 +24,5 @@ with file('myfile.txt','r') as f:
     print type(f.xreadlines()) #生成器，当需要读取时，才去取数据
     print type(f.readline()) #只读一行,字符串
     print type(f.read()) #读所有文件作为一个字符串
+
+print "hello,world"
