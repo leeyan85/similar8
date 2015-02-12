@@ -6,7 +6,7 @@ a = ['c','a']
 a='asfdsfd'
 print ' '.join('hellword')
 
-'''pos=0
+pos=0
 for i in range(a.count(2)):
     if pos==0:
         pos = pos + a.index(2)
@@ -20,4 +20,4 @@ for i in range(a.count(2)):
     new_list=a[first_pos:]
     next_pos = new_list.index(2) + 1
     print 'find positions',first_pos + new_list.index(2)
-    first_pos += next_pos'''
+    first_pos += next_pos
