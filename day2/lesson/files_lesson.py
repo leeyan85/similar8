@@ -1,6 +1,6 @@
 #coding: utf-8
 f=file('myfile.txt','r')
-for line in f.readlines():
+for line in f.xreadlines():
     line = line.strip('\n').split(':')
     print line
     
