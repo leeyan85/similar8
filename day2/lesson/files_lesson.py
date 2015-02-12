@@ -25,4 +25,3 @@ with file('myfile.txt','r') as f:
     print type(f.readline()) #只读一行,字符串
     print type(f.read()) #读所有文件作为一个字符串
 
-print "hello,world"
