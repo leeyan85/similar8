@@ -3,22 +3,6 @@ import  threading
 import  time  
    
 counter = 0
-<<<<<<< HEAD
-mutex = threading.Lock()
-   
-class  MyThread(threading.Thread):  
-     def  __init__( self ):  
-        threading.Thread.__init__( self )
-        self.step=0
-      
-     def run( self ):  
-         global counter, mutex
-         time.sleep(1);  
-         if mutex.acquire():
-            counter +=  1 
-            print "I am %s, set counter:%s"  % ( self .name, counter)  
-            mutex.release()
-=======
 counter_lock = threading.Lock() #只是定义一个锁,并不是给资源加锁,你可以定义多个锁,像下两行代码,当你需要占用这个资源时，任何一个锁都可以锁这个资源
 counter_lock2 = threading.Lock() 
 counter_lock3 = threading.Lock()
@@ -36,7 +20,6 @@ class  MyThread(threading.Thread):#使用类定义thread，继承threading.Threa
             counter += 1   
             print "I am %s, set counter:%s"  % (self.name,counter)  
             counter_lock.release() #使用完counter资源必须要将这个锁打开，让其他线程使用
->>>>>>> 1b561acafaaa55af50c6516564431affba409dd2
             
 if  __name__ ==  "__main__":  
     for i in xrange(1,101):  
