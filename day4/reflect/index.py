@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 #coding:utf-8
-'''
+
 import backend.account
 data=raw_input('请输入：')
 array=data.split('/')
@@ -21,7 +21,7 @@ else:
     print 'No exception'
 finally:
     print "有无异常都要执行"
-'''    
+   
     
     
 class MyException(Exception):
@@ -31,5 +31,18 @@ class MyException(Exception):
         return '自定义异常：MyException'
     
 obj=MyException('异常')
-print obj
+print obj #用于调试，显示异常
+
+def A():
+    return 'abc'
+
+try:
+    res = A()
+    print res
+    if res == 'abc':
+        print 'right'
+    else:
+        raise MyException('异常')
+except MyException,e:
+    print e
 
