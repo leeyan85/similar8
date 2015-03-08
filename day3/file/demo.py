@@ -39,7 +39,7 @@ print checkcode_chr
 checkcode=''.join(checkcode_chr)
 print checkcode
 
-#随机生成验证码
+#随机生成验证码2
 import string
 code=[]
 a=string.ascii_letters+string.digits
@@ -60,28 +60,6 @@ import pickle
 a={'Lee':29,'Frank':25}
 with open('C:/python/SVNROOT/similar8/tmp/temp.txt','w') as f:
     pickle.dump(a,f)
-
-
-#RE
-import re
-result1=re.match('\d+','abc987cnd123') #匹配开头
-if result1 is None:
-    print "nothing"
-else:    
-    print result1.group()
-
-result2=re.search('\d+','123abc987cnd')#在整个字符串中寻找，找到第一个
-if result2:
-    print result2.group()
-
-result3=re.findall('\d+','123abc987cnd')#找到所有的匹配返回列表
-print result3
-
-com=re.compile('(\d{1,3})\.(\w{1,3})')#分组查询
-result4=com.match('192.168.1.1')
-if result4:
-    print result4.group()
-
 
 
 

@@ -56,5 +56,3 @@ a=[1,2,4,4,5]
 print filter(lambda x: x>1,a)
 print map(lambda y: y+100,a)
 print reduce(lambda x,y: x+y,a)
-
-

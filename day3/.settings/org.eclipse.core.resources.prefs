@@ -1,6 +1,7 @@
 eclipse.preferences.version=1
 encoding//file/demo.py=utf-8
-encoding//file/myqlserver.py=utf-8
-encoding//file/sqlserver.py=utf-8
-encoding//main/index.py=utf-8
+encoding//main/Re_lesson.py=utf-8
 encoding//main/iterator_lesson.py=utf-8
+encoding//main/lambda_lesson.py=utf-8
+encoding//main/pachong.py=utf-8
+encoding//main/thread_process.py=utf-8
