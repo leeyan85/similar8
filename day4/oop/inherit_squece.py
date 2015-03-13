@@ -1,9 +1,8 @@
 #!/usr/bin/env python 
 #coding:utf-8
 #经典类继承是深度优先，是一个BUG, 新式类是广度优先，应该是用新式类
-from test.pickletester import metaclass
 
-class A(object):
+class A():
     def __init__(self):
         print 'This is from A'
     
@@ -36,16 +35,16 @@ from abc import ABCMeta,abstractmethod
 class interface(object):
     __metaclass__ = ABCMeta   
     @abstractmethod
-    def send(self):
+    def Lee(self):
         pass
 
-class weixin(interface):
+class RelalizeInterface(interface):
     def __init__(self):    
-        print 'this is weixin'
-    def send(self):
-        print 'hello,world'
+        print '这是接口interface的实现'
+    def Lee(self):
+        print '实现'
     
-sender = weixin()
+sender = RelalizeInterface()
 sender.send()
 
 

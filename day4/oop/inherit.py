@@ -6,8 +6,11 @@ class Father(object):#新式类
         self.name='Liu'
         self.FamilyName='Yan'
         
-    def Func(self):
-        print 'Father.Func'
+    def Lee(self):
+        print '我是父类函数Lee'
+    
+    def Allen(self):
+        print "我是父类函数Allen"
         
 class Son(Father):
     def __init__(self):
@@ -18,11 +21,12 @@ class Son(Father):
     def Bar(self):
         print 'Son.Bar'
     
-    def Func(self):
-        print 'Son overwrite the Father Func'
+    def Lee(self):#重写父类函数Lee
+        print '子类重写了父类函数Lee'
     
 s1=Son()
-print "inherit the father's FamilyName："+ s1.FamilyName
-print s1.name
-s1.Func()
+print "继承了父类的姓"+ s1.FamilyName
+print "重写了父类的名字",s1.name
+s1.Lee() #子类重写了父类函数Lee
+s1.Allen() #子类继承了父类函数Allen
 
