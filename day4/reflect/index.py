@@ -4,7 +4,7 @@
 
 #反射，当别的程序传入给你写的这段代码一个字符串，这个字符串是一个模块或者一个模块下的某个方法，你需要导入此模块或者方法，如何导入此模块或则方法呢
 #如果直接执行 import ××× 是会出错的，因为×××在你的这段代码中是一个变量,这时就需要反射
-'''
+
 import backend.account
 from Queue import Queue
 data=raw_input('请输入：')
@@ -61,6 +61,7 @@ import math
 func="pow"
 pow=getattr(MathModule,func)
 print pow(2,4)
+
 '''
 import Queue
 queue=Queue.Queue()
@@ -80,5 +81,5 @@ def ServerB():
         func=getattr(MathModule,task['func'])
         print func(2,4)
 ServerB()    
-运行ServerB函数, 执行相应的任务.
 
+'''
