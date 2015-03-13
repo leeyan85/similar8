@@ -3,6 +3,8 @@
 Created on 2015
 @author: Leey
 '''
-print __name__
-print __file__
-print __doc__
+
+if __name__ == '__main__':
+    print "__name__变量是: ", __name__
+    print "__file__变量是: ", __file__
+    print "__doc__变量是: ", __doc__

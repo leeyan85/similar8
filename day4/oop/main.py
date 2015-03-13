@@ -2,81 +2,124 @@
 #coding:utf-8
 class Province(object):
     #静态字段
-    memo = '中国的23个省之一'
-    __private = 'This is 静态私有变量'   
+    desc = '中国一级行政区'
     
     #动态字段
-    def __init__(self,name,capital,leader,flag=True):
-        self.Name = name
-        self.Capital = capital
+    def __init__(self,name,capital,leader,flag=True): #定义专有方法__func__
+        #动态字段,只有实例化的对象才能访问动态字段，类本身不能访问动态字段
+        self.Name = name 
+        self.Capital = capital 
         self.Leader = leader
-        self.__Thailand = flag #私有变量
-   
-    #动态方法,或叫对象方法
-    def SportsAction(self):
-        print 'This is 动态方法'    
+        self.__Pollution = flag #私有变量定义__var
+        self.Dict={'name':'Lee','age':30}
+
+    #动态方法,或叫对象方法，只有实例化的对象才能访问动态方法
+    def FrankDynamic(self):
+        print 'This is 动态方法'
     
-    #静态方法,去掉则编译报错;还有静态方法不能访问类变量和实例变量
-    #不需要定义实例即可使用这个方法。另外，多个实例共享此静态方法
-    @staticmethod
-    def Foo():
+    #静态方法不能访问类变量和实例变量,相当于一个全局函数
+    #不需要定义实例即可使用这个方法。另外，多个实例共享此静态方法，只需要分配一个内存
+    @staticmethod 
+    def LeeStatic():
         print 'this is 静态方法'
     
     #特性，访问方式和字段的访问方式一样   
     @property
-    def Bar(self):
+    def AllenProperty(self):
         return self.Name
     
-    #类方法，一个类方法就可以通过类或它的实例来调用的方法, 
-    #不管你是用类来调用这个方法还是类实例调用这个方法,该方法的第一个参数总是定义该方法的类对象  
+    #类方法，一个类方法就可以通过类对象或类对象的实例来调用的方法, 
+    #不管你是用类对象还是类实例调用这个方法,该方法的第一个参数总是定义该方法的类对象  
     @classmethod
-    def Demo(cls):
+    def MarlonClass(cls):
         print 'This is 类方法'
     
-    #私有函数
-    def __sha(self):
-        print '私有函数'
+    #私有函数,只可以在类的动态函数中使用，也可以通过实例object._Province__sha调用，但请不要使用
+    def __sha(self): 
+        print 'This is 私有函数'
     
-    def Foo2(self): #通过它调用有函数
+    def AswillDynamic(self): #可以通过动态方法调用私有函数
         self.__sha()
         
-    #读动态私有字段
-    @property
-    def Thailand(self):
-        print self.__Thailand
-    
-    #写动态私有字段
-    @Thailand.setter
-    def Thailand(self,value):
-        self.__Thailand = value
 
-    def __call__(self):
+            
+    @property #通过特性来访问动态私有字段，可以使用该装饰器，又叫特性
+    def Pollution(self):
+        print self.__Pollution
+            
+    @Pollution.setter #通过特性，修改动态私有字段,可以使用该装饰器，必须和上边的函数相结合
+    def Pollution(self,value):
+        self.__Pollution = value
+
+    #常用的专有方法
+    def __call__(self): #__call__专有方法
         print "this is call 方法"
-           
-hb=Province('河北','石家庄','李扬')
+        return "this is __str__专有方法"
+   
+    def __str__(self):
+        return "this is __str__专有方法"
+    
+    def __getitem__(self,key):
+        return self.Dict[key]
+    
+    def __setitem__(self,key,value):
+        self.Dict[key]=value
 
-#类不能访问动态字段
-#Province.Name
+    def __delitem__(self,key):
+        del self.Dict[key]
+
+        
+####################以上是类的定义##############################
+    
+#实例化一个对象               
+HeiBeiProvince=Province('河北','石家庄','李扬',flag=False)
 
 #对象可以访问静态字段
-print hb.memo
-hb.SportsAction()
+print HeiBeiProvince.desc
+HeiBeiProvince.FrankDynamic()
 
 #类不能访问动态方法
-#Province.SportsAction()
+#Province.FrankDynamic()
 
-#对象和类都可以访问静态方法Foo
-Province.Foo()
-hb.Foo()
+#对象和类都可以访问静态方法LeeStatic
+Province.LeeStatic()
+HeiBeiProvince.LeeStatic()
+
+#特性的访问方式
+print HeiBeiProvince.AllenProperty #特性,可以像访问变量一样访问特性
+
+#如何访问私有函数
+HeiBeiProvince.AswillDynamic() #该公有函数去调用对象的私有函数__sha()
+
+#通过特性访问修改私有变量
+HeiBeiProvince.Pollution
+HeiBeiProvince.Pollution=False
+HeiBeiProvince.Pollution
+HeiBeiProvince.MarlonClass()
 
 
-print hb.Bar #特性
 
-hb.Foo2() #该公有函数去调用对象的私有函数__sha()
+#对象可以通过以下方法访问类的私有函数
+HeiBeiProvince._Province__sha() #私有函数,可以通过这种方式访问，但坚决不要用在程序中
 
-#如何修改访问私有变量
-hb.Thailand
-hb.Thailand=False
-hb.Thailand
 
-hb() #执行类的__call__方法,把类的对象当作函数使用
+
+#专有方法的使用
+
+#__call__,可以把类的对象当作函数使用
+HeiBeiProvince() #把类的对象当作函数使用，相当于执行HeiBeiProvice.__call__()
+
+#__str__
+print HeiBeiProvince #会调用专有方法__str__
+
+#__getitem__
+print HeiBeiProvince['name']
+
+#__setitem__
+print 'before __setitem__', HeiBeiProvince['name']
+HeiBeiProvince['name']='Frank'
+print 'after __setitem__', HeiBeiProvince['name']
+
+#__delitem__
+del HeiBeiProvince['name']
+print HeiBeiProvince.Dict

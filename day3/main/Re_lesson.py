@@ -37,3 +37,4 @@ print m.group('ip'),m.group('hostname')
 re_com3 = re.compile('127.0.0.1')
 m = re_com3.sub('10.88.130.11',src_str)
 print m
+
