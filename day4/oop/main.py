@@ -13,13 +13,13 @@ class Province(object):
         self.__Pollution = flag #私有变量定义__var
         self.Dict={'name':'Lee','age':30}
 
-    #动态方法,或叫对象方法，只有实例化的对象才能访问动态方法
+    #动态方法,或叫实例方法，只有实例化的对象才能访问动态方法
     def FrankDynamic(self):
         Province.LeeStatic()
         print 'This is 动态方法'
     
     #静态方法不能访问类变量和实例变量,相当于一个全局函数
-    #不需要定义实例即可使用这个方法。另外，多个实例共享此静态方法，只需要分配一个内存
+    #类对象和类实例都可以访问静态方法,推荐使用类对象调用静态方法，在别的语言中强制使用类对象本身调用静态方法
     @staticmethod 
     def LeeStatic():
         print 'this is 静态方法'
@@ -29,13 +29,13 @@ class Province(object):
     def AllenProperty(self):
         return self.Name
     
-    #类方法，一个类方法就可以通过类对象或类对象的实例来调用的方法, 
-    #不管你是用类对象还是类实例调用这个方法,该方法的第一个参数总是定义该方法的类对象  
+    #类方法可以通过类对象或实例来调用的方法, 
+    #不管你是用类对象还是实例调用这个方法,该方法的第一个参数总是定义该方法的类对象  
     @classmethod
     def MarlonClass(cls):
         print 'This is 类方法'
     
-    #私有函数,只可以在类的动态函数中使用，也可以通过实例object._Province__sha调用，但请不要使用
+    #私有函数,只可以在动态方法中使用，也可以通过实例object._Province__sha调用，但请不要使用
     def __sha(self): 
         print 'This is 私有函数'
     
@@ -73,18 +73,18 @@ class Province(object):
         
 ####################以上是类的定义##############################
     
-#实例化一个对象               
+#实例化一个类对象               
 HeiBeiProvince=Province('河北','石家庄','李扬',flag=False)
-#对象可以访问静态字段，静态字段最好使用类调用，不要使用实例调用
+#类对象和实例都可以访问静态字段，静态字段最好使用类调用，不要使用实例调用
 print HeiBeiProvince.desc #不推荐使用实例去调用静态字段或者方法
 print Province.desc #推荐使用的类对象直接调用静态字段或者方法
 
 HeiBeiProvince.FrankDynamic()
 
-#类不能访问动态方法
+#类对象不能访问动态方法
 #Province.FrankDynamic()
 
-#对象和类都可以访问静态方法LeeStatic,推荐使用类对象调用静态方法
+#类对象和类实例都可以访问静态方法LeeStatic,推荐使用类对象调用静态方法
 Province.LeeStatic() 
 HeiBeiProvince.LeeStatic()
 
@@ -102,15 +102,15 @@ HeiBeiProvince.MarlonClass()
 
 
 
-#对象可以通过以下方法访问类的私有函数
+#实例可以通过以下方法访问类的私有函数
 HeiBeiProvince._Province__sha() #私有函数,可以通过这种方式访问，但坚决不要用在程序中
 
 
 
 #专有方法的使用
 
-#__call__,可以把类的对象当作函数使用
-HeiBeiProvince() #把类的对象当作函数使用，相当于执行HeiBeiProvice.__call__()
+#__call__,可以把类对象的实例当作函数使用
+HeiBeiProvince() #把类对象的实例当作函数使用，相当于执行HeiBeiProvice.__call__()
 
 #__str__
 print HeiBeiProvince #会调用专有方法__str__
