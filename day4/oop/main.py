@@ -15,6 +15,7 @@ class Province(object):
 
     #动态方法,或叫对象方法，只有实例化的对象才能访问动态方法
     def FrankDynamic(self):
+        Province.LeeStatic()
         print 'This is 动态方法'
     
     #静态方法不能访问类变量和实例变量,相当于一个全局函数
@@ -39,6 +40,7 @@ class Province(object):
         print 'This is 私有函数'
     
     def AswillDynamic(self): #可以通过动态方法调用私有函数
+        
         self.__sha()
         
 
@@ -73,16 +75,17 @@ class Province(object):
     
 #实例化一个对象               
 HeiBeiProvince=Province('河北','石家庄','李扬',flag=False)
+#对象可以访问静态字段，静态字段最好使用类调用，不要使用实例调用
+print HeiBeiProvince.desc #不推荐使用实例去调用静态字段或者方法
+print Province.desc #推荐使用的类对象直接调用静态字段或者方法
 
-#对象可以访问静态字段
-print HeiBeiProvince.desc
 HeiBeiProvince.FrankDynamic()
 
 #类不能访问动态方法
 #Province.FrankDynamic()
 
-#对象和类都可以访问静态方法LeeStatic
-Province.LeeStatic()
+#对象和类都可以访问静态方法LeeStatic,推荐使用类对象调用静态方法
+Province.LeeStatic() 
 HeiBeiProvince.LeeStatic()
 
 #特性的访问方式
@@ -123,3 +126,10 @@ print 'after __setitem__', HeiBeiProvince['name']
 #__delitem__
 del HeiBeiProvince['name']
 print HeiBeiProvince.Dict
+
+
+#专有变量__dict__
+print HeiBeiProvince.__dict__
+
+#专有变量__doc__
+print HeiBeiProvince.__dict__
