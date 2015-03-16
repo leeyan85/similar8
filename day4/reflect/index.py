@@ -52,34 +52,3 @@ except LeeException,e:
     print e
 
 
-#例子，如何导入通过变量导入math模块
-module="math"
-MathModule=__import__(module)
-print MathModule.pow(2,4)
-import math
-#例子通过变量导入方法
-func="pow"
-pow=getattr(MathModule,func)
-print pow(2,4)
-
-'''
-import Queue
-queue=Queue.Queue()
-
-def ServerA():
-    Dict={'server':'B','module':'math','func':'pow'}
-    queue.put(Dict)
-ServerA()
-
-    
-def ServerB():
-    task=queue.get()
-    #首先需要导入module
-    if task['server']=='B':
-        MathModule=__import__(task['module'])
-        #其次在module中找到task['func']
-        func=getattr(MathModule,task['func'])
-        print func(2,4)
-ServerB()    
-
-'''
