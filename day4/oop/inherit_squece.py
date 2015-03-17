@@ -45,6 +45,6 @@ class RelalizeInterface(interface):
         print '实现'
     
 sender = RelalizeInterface()
-sender.send()
+sender.Lee()
 
 
